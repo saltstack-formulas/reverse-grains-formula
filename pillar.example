@@ -1,0 +1,44 @@
+####################################################################
+# Grains pillar:                                                   #
+# Only compound matches are uses                                   #
+#                                                                  #
+# Matches with single value will appear in /etc/salt/grains as:    #
+# grain: value                                                     #
+#                                                                  #
+# Matches with multiple values will appear in /etc/salt/grains as: #
+# grain:                                                           #
+# - value1                                                         #
+# - value2                                                         #
+####################################################################
+grains:
+  # Grain
+  environment:
+    # Grain value
+    prod:
+      # Compound match to apply the grain and value to
+      - G@environment:prod
+    qa:
+      - G@environment:qa
+    dev:
+      - G@environment:dev
+    testing:
+      - G@environment:testing
+  datacenter:
+    phx:
+      - G@id:*phx*
+    ewr:
+      - G@id:*ewr*
+  roles:
+    database:
+      - G@id:db*
+    memcache:
+      - G@id:memcache*
+    docker:
+      - G@id:docker*
+    logserver:
+      - G@id:log*
+    web:
+      - G@id:web*
+  subrole:
+    primary:
+      - E@web[0-9]+-(phx|ewr).example.com or E@db[0-9]+-(phx|ewr).example.com

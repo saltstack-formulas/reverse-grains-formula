@@ -1,6 +1,6 @@
 ####################################################################
 # Grains pillar:                                                   #
-# Only compound matches are uses                                   #
+# Only compound matches are used                                   #
 #                                                                  #
 # Matches with single value will appear in /etc/salt/grains as:    #
 # grain: value                                                     #

@@ -40,7 +40,7 @@ class GrainMaker:
 
   def _parseGrainValues(self, grain):
     # Parses individual grains and their values passed from the pillar
-    grainKey = grain.keys()[0]
+    grainKey = next(iter(grain.keys()))
     if grain[grainKey]:
       for value in grain[grainKey]:
         self._addToGrains(grain, grainKey, value)
